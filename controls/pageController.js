@@ -14,7 +14,17 @@ exports.getAdminComments = function(req,res){
     res.render('../views/admin/comments.ejs');
 };
 exports.getAdminIndex = function(req,res){
-    res.render('../views/admin/index.ejs');
+    // res.render('../views/admin/index.ejs');
+    console.log(req.session.isLogin);
+    if (req.session.isLogin && req.session.isLogin == 'true') {
+        res.render('admin/index.ejs');
+    } else {
+        res.writeHead(301, {
+            'Location': '/admin/login'
+        })
+        res.end()
+    }
+    
 };
 exports.getAdminLogin = function(req,res){
     res.render('../views/admin/login.ejs')
