@@ -4,7 +4,8 @@ let con = mysql.createConnection({
     port:'3306',
     user:'root',
     password:'root',
-    database:'baixiu'
+    database:'baixiu',
+    dateStrings:true
 })
 exports.getAllPosts=(obj,callback)=>{
     let sql =`SELECT posts.*,categories.\`name\`,users.nickname
@@ -17,7 +18,18 @@ exports.getAllPosts=(obj,callback)=>{
         if(err){
             callback(err);
         } else{
-            callback(null,results);
+            // callback(null,results);
+            sql=`SELECT count(*) as cnt
+            FROM posts
+            JOIN categories on posts.category_id=categories.id
+            JOIN users on posts.user_id = users.id`;
+            con.query(sql,(err2,res2)=>{
+                if(err2) {
+                    callback(err2);
+                } else{
+                    callback(null,{data:results,total:res2[0].cnt});
+                }
+            })
         }
     })
 }
