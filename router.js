@@ -23,5 +23,5 @@ router.get('/',pageController.getIndex)
     .post('/testEmail',usersController.testEmail)
     .get('/getAllPosts',postsController.getAllPosts)
     .get('/getAllCate',cateController.getAllCate)
-    .post('uploadFile',uploadController.uploadFile)
+    .post('/uploadFile',uploadController.uploadFile)
 module.exports=router;
