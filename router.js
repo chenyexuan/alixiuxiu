@@ -3,6 +3,7 @@ const pageController = require('./controls/pageController');
 const cateController = require('./controls/cateController');
 const usersController = require('./controls/usersController');
 const postsController = require('./controls/postsController');
+const uploadController = require('./controls/uploadController');
 let router = express.Router();
 router.get('/',pageController.getIndex)
     .get('/detail',pageController.getDetail)
@@ -21,5 +22,6 @@ router.get('/',pageController.getIndex)
     .get('/admin/users',pageController.getAdminUsers)
     .post('/testEmail',usersController.testEmail)
     .get('/getAllPosts',postsController.getAllPosts)
-    .get('/getAllCate',cateController.getAllCate);
+    .get('/getAllCate',cateController.getAllCate)
+    .post('uploadFile',uploadController.uploadFile)
 module.exports=router;
