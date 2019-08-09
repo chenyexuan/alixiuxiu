@@ -1,12 +1,4 @@
-const mysql = require('mysql');
-let con = mysql.createConnection({
-    host: '127.0.0.1',
-    port: '3306',
-    user: 'root',
-    password: 'root',
-    database: 'baixiu',
-    dateStrings: true
-})
+const con = require('../utils/myconn');
 exports.getAllPosts = (obj, callback) => {
     console.log(obj);
     let sql = `SELECT posts.*,categories.\`name\`,users.nickname
