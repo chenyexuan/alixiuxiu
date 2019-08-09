@@ -1,5 +1,6 @@
 const express = require('express');
 const pageController = require('./controls/pageController');
+const cateController = require('./controls/cateController');
 const usersController = require('./controls/usersController');
 const postsController = require('./controls/postsController');
 let router = express.Router();
@@ -19,5 +20,6 @@ router.get('/',pageController.getIndex)
     .get('/admin/slides',pageController.getAdminSlides)
     .get('/admin/users',pageController.getAdminUsers)
     .post('/testEmail',usersController.testEmail)
-    .get('/getAllPosts',postsController.getAllPosts);
+    .get('/getAllPosts',postsController.getAllPosts)
+    .get('/getAllCate',cateController.getAllCate);
 module.exports=router;
