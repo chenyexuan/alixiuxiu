@@ -41,6 +41,10 @@ $(function(){
     //添加文章
     $('[class="btn btn-primary"]').on('click',function(){
         CKEDITOR.instances.content.updateElement();//富文本框内容同步到原有文本框内容
+        if($('#title').val()==''||$('#content').val()==''||$('#slug').val()==''){
+            alert('请输入要添加的文章的基本信息');
+            return;
+        }
         let data = $('form').serialize();
         console.log(data);
         $.ajax({
