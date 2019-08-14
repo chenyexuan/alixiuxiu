@@ -18,4 +18,23 @@ exports.getAllPosts=(req,res)=>{
             })
         }
     })
+};
+exports.addPost = (req,res)=>{
+    let obj =req.body;
+    obj.views =0;
+    obj.likes=0;
+    obj.user_id=req.session.currentUser.id;
+    postsModel.addPost(obj,(err,data)=>{
+        if(err){
+            res.json({
+                code:400,
+                msg:'添加文章失败'
+            })
+        } else{
+            res.json({
+                code:200,
+                msg:'添加文章成功'
+            })
+        }
+    })
 }

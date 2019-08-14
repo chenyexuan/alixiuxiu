@@ -5,6 +5,7 @@ const usersController = require('./controls/usersController');
 const postsController = require('./controls/postsController');
 const uploadController = require('./controls/uploadController');
 let router = express.Router();
+//静态资源加载
 router.get('/',pageController.getIndex)
     .get('/detail',pageController.getDetail)
     .get('/list',pageController.getList)
@@ -20,8 +21,11 @@ router.get('/',pageController.getIndex)
     .get('/admin/settings',pageController.getAdminSettings)
     .get('/admin/slides',pageController.getAdminSlides)
     .get('/admin/users',pageController.getAdminUsers)
+//登录验证
     .post('/testEmail',usersController.testEmail)
+//文章页面处理
     .get('/getAllPosts',postsController.getAllPosts)
     .get('/getAllCate',cateController.getAllCate)
     .post('/uploadFile',uploadController.uploadFile)
+    .post('/addPost',postsController.addPost)
 module.exports=router;

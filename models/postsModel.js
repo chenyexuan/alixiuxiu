@@ -44,4 +44,15 @@ exports.getAllPosts = (obj, callback) => {
             })
         }
     })
+};
+exports.addPost = (obj,callback)=>{
+    let sql =`insert into posts set ?`;
+    con.query(sql,obj,(err)=>{
+        console.log(sql);
+        if(err){
+            callback(err);
+        } else{
+            callback(null);
+        }
+    })
 }
